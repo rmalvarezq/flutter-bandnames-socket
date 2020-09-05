@@ -41,18 +41,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _bandTile(Band band) {
-    return ListTile(
-      child: ListTile,
-          leading: CircleAvatar(
-            child: Text(band.name.substring(0,2) ),
-            backgroundColor: Colors.blue[100],
+    return Dismissible(
+          key: Key(band.id),
+          child: ListTile(
+            leading: CircleAvatar(
+              child: Text(band.name.substring(0,2) ),
+              backgroundColor: Colors.blue[100],
+            ),
+            title: Text(band.name),
+            trailing: Text('${ band.votes }',style: TextStyle(fontSize: 20)),
+            onTap: (){
+              print(band.name);
+            },
           ),
-          title: Text(band.name),
-          trailing: Text('${ band.votes }',style: TextStyle(fontSize: 20)),
-          onTap: (){
-            print(band.name);
-          },
-        );
+    );
   }
 
   addNewBand(){
