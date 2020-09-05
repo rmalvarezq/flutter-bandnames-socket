@@ -43,6 +43,20 @@ class _HomePageState extends State<HomePage> {
   Widget _bandTile(Band band) {
     return Dismissible(
           key: Key(band.id),
+          direction: DismissDirection.startToEnd,
+          onDismissed: ( direction){
+            print('direction: $direction');
+            print('id   :  ${band.id}');
+            //Todo: llamar el borrado en el server
+          },
+          background: Container(
+            padding: EdgeInsets.only(left: 8.0),
+            color: Colors.red,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Deleted Band', style: TextStyle(color: Colors.white) ),
+            )
+          ),
           child: ListTile(
             leading: CircleAvatar(
               child: Text(band.name.substring(0,2) ),
